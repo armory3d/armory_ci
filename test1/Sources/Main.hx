@@ -19,9 +19,6 @@ class Main {
     }
     #end
     public static function main() {
-        iron.system.CompileTime.importPackage('armory.trait');
-        iron.system.CompileTime.importPackage('armory.renderpath');
-        iron.system.CompileTime.importPackage('arm');
         state = 1;
         #if (js && arm_physics) state++; loadLib("ammo.js"); #end
         #if (js && arm_navigation) state++; loadLib("recast.js"); #end
