@@ -2,8 +2,8 @@
 let project = new Project('untitled');
 
 project.addSources('Sources');
-project.addLibrary("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk//armory");
-project.addLibrary("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk//iron");
+project.addLibrary("../../..");
+project.addLibrary("iron");
 project.addParameter("--macro include('armory.trait')");
 project.addParameter("--macro include('armory.trait.internal')");
 project.addShaders('build_untitled/compiled/ShaderRaws/Material/Material_mesh.frag.glsl');
@@ -41,10 +41,6 @@ project.addAssets("build_untitled/compiled/Shaders/smaa_edge_detect/smaa_edge_de
 project.addAssets("build_untitled/compiled/Shaders/smaa_neighborhood_blend/smaa_neighborhood_blend.arm");
 project.addAssets("build_untitled/compiled/Shaders/ssao_pass/ssao_pass.arm");
 project.addAssets("build_untitled/compiled/Shaders/world/world.arm");
-project.addAssets("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk/armory/Assets/brdf.png");
-project.addAssets("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk/armory/Assets/noise8.png");
-project.addAssets("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk/armory/Assets/smaa_area.png");
-project.addAssets("/Users/lubos/Documents/GitHub/blender-build/build/bin/Release/blender.app//armsdk/armory/Assets/smaa_search.png");
 project.addAssets("build_untitled/compiled/Assets/Scene.arm");
 project.addAssets("build_untitled/compiled/Assets/envmaps/World_irradiance.arm");
 project.addAssets("build_untitled/compiled/Assets/materials/World_material.arm");
