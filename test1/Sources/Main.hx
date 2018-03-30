@@ -17,14 +17,14 @@ class Main {
     static var state:Int;
     #if js
     static function loadLib(name:String) {
-        kha.LoaderImpl.loadBlobFromDescription({ files: [name] }, function(b:kha.Blob) {
+        kha.Assets.loadBlobFromPath(name, function(b:kha.Blob) {
             untyped __js__("(1, eval)({0})", b.toString());
             state--;
             start();
         });
     }
     static function loadLibAmmo(name:String) {
-        kha.LoaderImpl.loadBlobFromDescription({ files: [name] }, function(b:kha.Blob) {
+        kha.Assets.loadBlobFromPath(name, function(b:kha.Blob) {
             var print = function(s:String) { trace(s); };
             var loaded = function() { state--; start(); }
             untyped __js__("(1, eval)({0})", b.toString());
