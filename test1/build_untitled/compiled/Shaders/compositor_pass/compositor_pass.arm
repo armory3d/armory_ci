@@ -1,1 +1,0 @@
-¬shader_datas‘‚¨contexts‘Š¯fragment_shader´compositor_pass.frag¬compare_mode¦always±color_write_alphaÂ­vertex_shader´compositor_pass.vert­texture_units”¤name£tex¤name¨gbufferD¤name¨gbuffer0¤name¨gbuffer1°vertex_structure‘‚¤name£pos¤size©cull_mode¤none©constants‘ƒ¤link®_screenSizeInv¤type¤vec2¤name§texStep«depth_writeÂ¤name¯compositor_pass¤name¯compositor_pass

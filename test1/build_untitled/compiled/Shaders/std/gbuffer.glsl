@@ -1,8 +1,6 @@
 #ifndef _GBUFFER_GLSL_
 #define _GBUFFER_GLSL_
 
-#include "../compiled.glsl"
-
 vec2 octahedronWrap(const vec2 v) {
 	return (1.0 - abs(v.yx)) * (vec2(v.x >= 0.0 ? 1.0 : -1.0, v.y >= 0.0 ? 1.0 : -1.0));
 }
@@ -93,6 +91,32 @@ vec4 encodeRGBM(const vec3 rgb) {
 vec3 decodeRGBM(const vec4 rgbm) {
 	const float maxRange = 6.0;
     return rgbm.rgb * rgbm.a * maxRange;
+}
+
+uint encNor(vec3 n) {
+	ivec3 nor = ivec3(n * 255.0f);
+	uvec3 norSigns;
+	norSigns.x = (nor.x >> 5) & 0x04000000;
+	norSigns.y = (nor.y >> 14) & 0x00020000;
+	norSigns.z = (nor.z >> 23) & 0x00000100;
+	nor = abs(nor);
+	uint val = norSigns.x | (nor.x << 18) | norSigns.y | (nor.y << 9) | norSigns.z | nor.z;
+	return val;
+}
+
+vec3 decNor(uint val) {
+	uvec3 nor;
+	nor.x = (val >> 18) & 0x000000ff;
+	nor.y = (val >> 9) & 0x000000ff;
+	nor.z = val & 0x000000ff;
+	uvec3 norSigns;
+	norSigns.x = (val >> 25) & 0x00000002;
+	norSigns.y = (val >> 16) & 0x00000002;
+	norSigns.z = (val >> 7) & 0x00000002;
+	norSigns = 1 - norSigns;
+	vec3 normal = vec3(nor) / 255.0f;
+	normal *= norSigns;
+	return normal;
 }
 
 #endif
